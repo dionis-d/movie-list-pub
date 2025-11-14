@@ -1,0 +1,11 @@
+<div class="movie-card">
+  <img [src]="movie().poster_path | image" [alt]="movie().title" />
+
+  <div class="movie-title">
+    {{ movie().title }}
+  </div>
+
+  <div class="movie-overview">
+    {{ movie().overview }}
+  </div>
+</div>

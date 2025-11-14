@@ -1,0 +1,14 @@
+@reference "tailwindcss";
+
+.movie-card {
+  @apply p-4 bg-white rounded-xl shadow border border-gray-200
+  hover:shadow-md transition cursor-pointer;
+}
+
+.movie-title {
+  @apply font-medium text-lg mt-2;
+}
+
+.movie-overview {
+  @apply text-gray-500 text-sm mt-1;
+}

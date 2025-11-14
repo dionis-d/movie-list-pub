@@ -1,0 +1,103 @@
+<div class="container">
+  @if (movies.error(); as error) {
+    <div class="error-box">
+      Error: {{ error?.message }}
+    </div>
+  }
+
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="query"
+      placeholder="Search movies..."
+      (keyup)="onSearch()"
+      class="search-input"
+    />
+
+    <button (click)="onSearch()" class="search-button">
+      Search
+    </button>
+  </div>
+
+  @if (query.length) {
+    @if (searchMoviesLoading()) {
+      <h2 class="section-title">Popular Movies</h2>
+
+      <ul class="movies-grid">
+        @for (_ of [1,2,3,4]; track _) {
+          <li>
+            <div class="movie-skeleton">
+              <div class="skeleton-img"></div>
+              <div class="skeleton-line w-3/4"></div>
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line w-5/6"></div>
+            </div>
+          </li>
+        }
+      </ul>
+
+      <div class="pagination-skeleton">
+        <div class="skeleton-button"></div>
+        <div class="skeleton-button"></div>
+      </div>
+    } @else {
+      @if (moviesByQuery.value(); as data) {
+        <h2 class="section-title">Search Results</h2>
+
+        <ul class="movies-grid">
+          @for (movie of data.results; track movie.id) {
+            <li [routerLink]="[movie.id]">
+              <app-movie-card [movie]="movie"/>
+            </li>
+          }
+        </ul>
+
+        <div class="pagination">
+          <button
+            (click)="prevPageSearch()"
+            [disabled]="page() === 1"
+            class="pagination-prev"
+          >
+            Previous
+          </button>
+
+          <button
+            (click)="nextPageSearch()"
+            class="pagination-next"
+          >
+            Next
+          </button>
+        </div>
+      }
+    }
+  } @else {
+    @if (movies.value(); as data) {
+      <h2 class="section-title">Popular Movies</h2>
+
+      <ul class="movies-grid">
+        @for (movie of data.results; track movie.id) {
+          <li [routerLink]="[movie.id]">
+            <app-movie-card [movie]="movie"/>
+          </li>
+        }
+      </ul>
+
+      <div class="pagination">
+        <button
+          (click)="prevPage()"
+          [disabled]="page() === 1"
+          class="pagination-prev"
+        >
+          Previous
+        </button>
+
+        <button
+          (click)="nextPage()"
+          class="pagination-next"
+        >
+          Next
+        </button>
+      </div>
+    }
+  }
+</div>

@@ -1,0 +1,76 @@
+@reference "tailwindcss";
+
+.container {
+  @apply max-w-3xl mx-auto p-6 space-y-6;
+}
+
+.loading-text {
+  @apply text-center text-gray-500 text-lg animate-pulse;
+}
+
+.error-box {
+  @apply bg-red-100 text-red-700 p-4 rounded-xl border border-red-300;
+}
+
+.search-bar {
+  @apply flex items-center gap-3;
+}
+
+.search-input {
+  @apply flex-1 px-4 py-2 rounded-xl border border-gray-300
+  focus:ring-2 focus:ring-blue-500 focus:outline-none shadow-sm;
+}
+
+.search-button {
+  @apply px-5 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700
+  transition shadow-sm;
+}
+
+.section-title {
+  @apply text-2xl font-semibold mt-6;
+}
+
+.movies-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4;
+}
+
+
+.movie-skeleton {
+  @apply p-4 bg-white rounded-xl shadow border border-gray-200 animate-pulse;
+}
+
+.skeleton-img {
+  @apply w-full h-48 bg-gray-300 rounded-md;
+}
+
+.skeleton-line {
+  @apply h-4 bg-gray-200 rounded mt-2 w-full;
+
+  &.w-3\/4 {
+    @apply w-3/4;
+  }
+
+  &.w-5\/6 {
+    @apply w-5/6;
+  }
+}
+
+.pagination-skeleton {
+  @apply flex gap-2 mt-6 justify-center opacity-60 animate-pulse;
+}
+
+.skeleton-button {
+  @apply px-10 py-2 bg-gray-300 rounded-xl;
+}
+
+.pagination {
+  @apply flex gap-2 mt-6 justify-center;
+}
+
+.pagination-prev {
+  @apply px-4 py-2 bg-gray-200 rounded-xl hover:bg-gray-300 disabled:opacity-40;
+}
+
+.pagination-next {
+  @apply px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700;
+}
